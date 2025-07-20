@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f86ce97c0fab46e4198168ae6df20f3c
+timeCreated: 1554175784
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 143396
+  packageName: POLYGON Spy Kit - Low Poly 3D Art by Synty
+  packageVersion: 1.2.1
+  assetPath: Assets/PolygonSpy/Materials/Misc/Polygon_Spy_Glass_01.mat
+  uploadId: 751504

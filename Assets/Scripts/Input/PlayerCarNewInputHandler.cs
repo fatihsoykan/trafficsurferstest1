@@ -2,12 +2,31 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class PlayerCarNewInputHandler : MonoBehaviour
 {
     public LayerMask groundLayer;
     private bool isGrounded;
-
+    private bool canJump = false;
+    
     Rigidbody rb;
+
+
+    private int laneIndex = 1; // 0: sol, 1: orta, 2: sað
+    private float[] lanePositions = { -2f, 0f, 2f }; // X konumlarý (þeritler)
+    private float laneSwitchSpeed = 10f; // Þerit geçiþ hýzý
+    private Vector2 moveInput;
+
+    [Header("References")]
+    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float jumpCooldownTime = 0.2f;
+    [SerializeField] private float moveCooldownTime = 0.3f; // 0.3 saniye bekle
+    private float lastJumpTime;
+    private float lastMoveTime;
+
+
+
+
 
     PlayerInputAction playerInputAction;
     private void Awake()
@@ -22,49 +41,63 @@ public class PlayerCarNewInputHandler : MonoBehaviour
 
         // Event baðla
         playerInputAction.PlayerCarInputs.JUMP.performed += Jump;
-    
+        playerInputAction.PlayerCarInputs.MOVE.performed += Move;
+
     }
 
 
-
+    
     private void FixedUpdate()
     {
-        // Zemin kontrolü
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f, groundLayer);
+        // Zemin kontrolü için raycast
+        canJump = Physics.Raycast(transform.position, Vector3.down, 1.1f, groundLayer);
+        if (isGrounded)
+        {
+            canJump = true; // Yere deðdiyse tekrar zýplayabilir
+        }
 
-        // Hareket input'u
-        Vector2 inputVector = playerInputAction.PlayerCarInputs.MOVE.ReadValue<Vector2>();
-        rb.AddForce(new Vector3(inputVector.x, 0, 0) * 10f, ForceMode.Force);
+        // Þerit hedef pozisyonuna yumuþak geçiþ
+        Vector3 targetPosition = new Vector3(lanePositions[laneIndex], transform.position.y, transform.position.z);
+        Vector3 moveDirection = (targetPosition - transform.position);
+        rb.linearVelocity = new Vector3(moveDirection.x * laneSwitchSpeed, rb.linearVelocity.y, rb.linearVelocity.z);
+
+
     }
 
 
     public void Jump(InputAction.CallbackContext context)
     {
-        Debug.Log("Context geldi! Phase: " + context.phase);
+        if (context.phase != InputActionPhase.Performed) { return; }
+        if (Time.time < lastJumpTime + jumpCooldownTime) { return; }
+        if (!canJump) { return; }
 
-        if (context.phase == InputActionPhase.Performed && isGrounded)
-        {
-            Debug.Log("Jump!" + context.phase);
-            rb.AddForce(Vector3.up * 3f, ForceMode.Impulse);
-        }
+
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        lastJumpTime = Time.time;
+        canJump = false;
+
+
     }
 
     public void Move(InputAction.CallbackContext context)
-    {
-        Debug.Log("Context geldi! Phase: " + context.phase);
+    {       
         Vector2 inputVector = context.ReadValue<Vector2>();
-        rb.AddForce(new Vector3(inputVector.x, 0, inputVector.y) * 3f, ForceMode.Impulse);
+
+        if (Mathf.Abs(inputVector.x) < 0.5f) { return; } // çok küçük yönlerde hiçbir þey yapma. Deadzone
+
+        if (Time.time < lastMoveTime + moveCooldownTime) { return; }
+
+        if (inputVector.x < 0 && laneIndex > 0)
+        {
+            laneIndex--;
+            lastMoveTime = Time.time;
+        }
+        else if (inputVector.x > 0 && laneIndex < lanePositions.Length - 1)
+        {
+            laneIndex++;
+            lastMoveTime = Time.time;
+        }
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -76,6 +109,8 @@ public class PlayerCarNewInputHandler : MonoBehaviour
     private void OnDestroy()
     {
         playerInputAction.PlayerCarInputs.JUMP.performed -= Jump;
+        playerInputAction.PlayerCarInputs.MOVE.performed -= Move;
+
     }
 
 

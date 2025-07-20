@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 03a281ca7f964324e989d4fc892115bd
+timeCreated: 1554240646
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 143396
+  packageName: POLYGON Spy Kit - Low Poly 3D Art by Synty
+  packageVersion: 1.2.1
+  assetPath: Assets/PolygonSpy/Prefabs/Weapons/SM_Wep_Pistol_01.prefab
+  uploadId: 751504

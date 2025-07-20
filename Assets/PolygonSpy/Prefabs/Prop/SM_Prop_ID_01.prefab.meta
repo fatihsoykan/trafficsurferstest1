@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 5fc70bd6479b0754681eb2894cf8eb2e
+timeCreated: 1554240596
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 143396
+  packageName: POLYGON Spy Kit - Low Poly 3D Art by Synty
+  packageVersion: 1.2.1
+  assetPath: Assets/PolygonSpy/Prefabs/Prop/SM_Prop_ID_01.prefab
+  uploadId: 751504

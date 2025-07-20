@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6c1f2568bb8e54940a008a4b0cb5e9d5
+timeCreated: 1554240563
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 143396
+  packageName: POLYGON Spy Kit - Low Poly 3D Art by Synty
+  packageVersion: 1.2.1
+  assetPath: Assets/PolygonSpy/Prefabs/Characters/SM_Chr_Attach_NVG_Female_01.prefab
+  uploadId: 751504

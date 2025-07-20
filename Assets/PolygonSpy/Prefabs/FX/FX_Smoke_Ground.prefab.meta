@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 83f3170bdfae7044eb2cfec0f383b16f
+timeCreated: 1554252989
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 143396
+  packageName: POLYGON Spy Kit - Low Poly 3D Art by Synty
+  packageVersion: 1.2.1
+  assetPath: Assets/PolygonSpy/Prefabs/FX/FX_Smoke_Ground.prefab
+  uploadId: 751504
