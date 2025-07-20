@@ -23,7 +23,8 @@ public class PlayerCarNewInputHandler : MonoBehaviour
     [SerializeField] private float moveCooldownTime = 0.3f; // 0.3 saniye bekle
     private float lastJumpTime;
     private float lastMoveTime;
-
+    [SerializeField] private float groundCheckDistance = 0.2f;
+    [SerializeField] private Transform groundCheck;
 
 
 
@@ -50,7 +51,7 @@ public class PlayerCarNewInputHandler : MonoBehaviour
     private void FixedUpdate()
     {
         // Zemin kontrolü için raycast
-        canJump = Physics.Raycast(transform.position, Vector3.down, 1.1f, groundLayer);
+        canJump = Physics.Raycast(groundCheck.position, Vector3.down, groundCheckDistance, groundLayer);
         if (isGrounded)
         {
             canJump = true; // Yere deðdiyse tekrar zýplayabilir
@@ -112,16 +113,5 @@ public class PlayerCarNewInputHandler : MonoBehaviour
         playerInputAction.PlayerCarInputs.MOVE.performed -= Move;
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }
