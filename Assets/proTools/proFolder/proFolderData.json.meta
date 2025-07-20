@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 197a684f5907a3e4591f43b5f027c014
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 322444
+  packageName: proFolder
+  packageVersion: 1.1
+  assetPath: Assets/proTools/proFolder/proFolderData.json
+  uploadId: 771769

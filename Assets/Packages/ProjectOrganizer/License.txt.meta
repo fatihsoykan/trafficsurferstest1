@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c31d255ddb43dce4cbfbb54790607b87
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 322966
+  packageName: Project Organizer
+  packageVersion: 1.6
+  assetPath: Assets/Packages/ProjectOrganizer/License.txt
+  uploadId: 767913
